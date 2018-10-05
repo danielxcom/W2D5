@@ -72,7 +72,9 @@ class LinkedList
     nil
   end
 
-  def each
+  def each(&prc)
+    prc ||= Proc.new{|x, y| x<=> y}
+    @list.each {|child_node| prc.call(child_node)}
   end
 
   # uncomment when you have `each` working and `Enumerable` included
