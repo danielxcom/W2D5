@@ -15,6 +15,11 @@ class MaxIntSet
   end
 
   def remove(num)
+    validate!(num)
+    return nil unless include?(num)
+    return nil unless is_valid?(num)
+    @data[num] = false
+    num
   end
 
   def include?(num)
@@ -41,16 +46,25 @@ end
 
 class IntSet
   def initialize(num_buckets = 20)
-    @store = Array.new(num_buckets) { Array.new }
+    @data = Array.new(num_buckets) { Array.new }
   end
 
   def insert(num)
+    if include?(num)
+      return false
+    # else
+    #   self[num] << num
+    end
+    self[num] << num
+    puts num
   end
 
   def remove(num)
+    self[num].delete(num)
   end
 
   def include?(num)
+    self[num].include?(num)
   end
 
   private
