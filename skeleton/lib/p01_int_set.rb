@@ -127,6 +127,20 @@ class ResizingIntSet
     @count = 0
     newArr = Array.new(num_buckets * 2) { [] }
     @store = newArr
-    
+
+    temp = custFlatten(temp)
+    temp
+  end
+
+  def custFlatten(param)
+    result = []
+    param.each do |el|
+      if el.is_a?(Array)
+        result += custFlatten(el)
+      else
+        result << el
+      end
+    end
+    return result
   end
 end
