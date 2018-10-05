@@ -124,5 +124,9 @@ class ResizingIntSet
 
   def resize!
     temp = @data
+    @count = 0
+    newArr = Array.new(num_buckets * 2) { [] }
+    @store = newArr
+    
   end
 end
