@@ -1,6 +1,6 @@
-class StandardOutofBounds < StandardError
-  raise "out of bounds"
-end
+# class StandardOutofBounds < StandardError
+#   raise "out of bounds"
+# end
 
 class MaxIntSet
   def initialize(max)
@@ -23,10 +23,7 @@ class MaxIntSet
   end
 
   def include?(num)
-    if @data.include?(num)
-      validate!(num)
-      @data[num]
-    end
+    return true if @data[num]
   end
 
   private
@@ -35,12 +32,14 @@ class MaxIntSet
     (0...@data.length).each do |i|
       return true if @data[i] == num
     end
+
     return false
   end
 
   def validate!(num)
-    StandardOutofBounds if !is_valid?(num))
+    raise "out of bounds." if !is_valid?(num)
   end
+
 end
 
 
@@ -141,6 +140,9 @@ class ResizingIntSet
         result << el
       end
     end
+
     return result
   end
+
+
 end
